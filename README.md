@@ -1,4 +1,4 @@
-[!alt Clickbait report chart](plot_with_gnuplot)
+[!alt Clickbait report chart](report.png)
 
 # Vovozometer
 
