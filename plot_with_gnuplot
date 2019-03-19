@@ -1,0 +1,9 @@
+set title "Vovozometer - Clickbait Report"
+set datafile separator ","
+set key autotitle columnhead
+set boxwidth 0.9
+set style data histogram
+set style histogram cluster gap 1
+set style fill solid
+set xtics rotate by 45 right
+plot for [col=3:5] './lib/output/report_2019-03-19-12:16:08.csv' using col:xticlabels(1)

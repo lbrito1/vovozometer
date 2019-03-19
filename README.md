@@ -1,8 +1,10 @@
+[!alt Clickbait report chart](plot_with_gnuplot)
+
 # Vovozometer
 
 > Vovó de 90 anos humilha dermatologistas com creme anti-rugas e quase é presa em Recife!
 
-Measure clickbaits on a page.
+Measures clickbait statistics on a given URL.
 
 ## Usage
 
@@ -19,6 +21,10 @@ The Reporter outputs a CSV file in `/lib/output/` containing the following:
 ## Clickbait classification
 
 A simple match (`String#include?`) is done against a list of terms defined in `input/terms.yml`.
+
+## Plotting
+
+Done with gnuplot. Check `plot_with_gnuplot`.
 
 ## Why?
 
