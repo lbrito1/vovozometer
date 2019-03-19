@@ -5,7 +5,7 @@ class PageScraper
   attr_accessor :score_granny, :score_regular, :time_to_first_granny, :url,
     :occurrences, :hits
 
-  def initialize(url:, hits: 10)
+  def initialize(url:, hits: 20)
     @score_granny = 0
     @score_regular = 0
     @url = url
