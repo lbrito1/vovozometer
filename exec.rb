@@ -1,3 +1,4 @@
+require 'byebug'
 require './lib/interactors/reporter'
 
 urls = [

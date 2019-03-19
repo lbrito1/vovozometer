@@ -1,3 +1,4 @@
+require 'net/http'
 require 'selenium-webdriver'
 require 'webdriver-user-agent'
 
@@ -34,7 +35,6 @@ class PageScraper
 
   def get_page_content
     driver.get(url)
-
     # Important: go to end of page
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
 
@@ -42,6 +42,9 @@ class PageScraper
 
     body = driver.find_element(css: 'body')
     body.attribute("innerHTML").downcase
+  rescue Net::ReadTimeout, Selenium::WebDriver::Error::TimeOutError
+    puts 'Timed out.'
+    ''
   end
 
   def calculate_scores(iteration, text)
@@ -60,6 +63,17 @@ class PageScraper
   end
 
   def driver
-    @driver ||= Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone)
+    @driver ||= begin
+      options = Selenium::WebDriver::Chrome::Options.new
+      options.add_argument('--headless')
+
+      driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, options: options)
+
+      driver.manage.timeouts.implicit_wait = 20
+      driver.manage.timeouts.script_timeout = 20
+      driver.manage.timeouts.page_load = 20
+
+      driver
+    end
   end
 end

@@ -1,7 +1,5 @@
 require 'csv'
-require 'byebug'
 require './lib/interactors/page_scraper'
-
 
 class Reporter
   attr_accessor :urls, :report
