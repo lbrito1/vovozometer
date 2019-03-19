@@ -20,7 +20,7 @@ class PageScraper
     $stdout.flush
     @results ||= begin
       hits.times do |i|
-        short_url = url[/(?<=:\/\/).+/][0..20]
+
         print "Scraping #{short_url}... #{i + 1} of #{hits} times...\r"
         $stdout.flush
         text = get_page_content
@@ -29,6 +29,10 @@ class PageScraper
     end
 
     driver.quit
+  end
+
+  def short_url
+    url[/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/]
   end
 
   private
