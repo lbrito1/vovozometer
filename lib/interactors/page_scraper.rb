@@ -2,23 +2,25 @@ require 'selenium-webdriver'
 require 'webdriver-user-agent'
 
 class PageScraper
-  attr_accessor :score_granny, :score_regular, :time_to_first_granny, :url, :occurrences
+  attr_accessor :score_granny, :score_regular, :time_to_first_granny, :url,
+    :occurrences, :hits
 
-  def initialize(url:)
+  def initialize(url:, hits: 10)
     @score_granny = 0
     @score_regular = 0
     @url = url
     @terms = YAML.load(File.read('./lib/input/terms.yml'))
     @occurrences = []
     @time_to_first_granny = nil
+    @hits = hits
   end
 
   def call
-    repeat = 10
-
+    $stdout.flush
     @results ||= begin
-      repeat.times do |i|
-        print "Scraping #{url}. Done #{i + 1} of #{repeat} times...\r"
+      hits.times do |i|
+        short_url = url[/(?<=:\/\/).+/][0..20]
+        print "Scraping #{short_url}... #{i + 1} of #{hits} times...\r"
         $stdout.flush
         text = get_page_content
         calculate_scores(i, text)
