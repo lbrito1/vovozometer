@@ -1,4 +1,4 @@
-[Clickbait report chart](https://raw.githubusercontent.com/lbrito1/vovozometer/master/report.png)
+![Clickbait report chart](https://raw.githubusercontent.com/lbrito1/vovozometer/master/report.png)
 
 # Vovozometer
 
