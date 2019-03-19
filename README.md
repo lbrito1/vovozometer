@@ -1,10 +1,10 @@
-![Clickbait report chart](https://raw.githubusercontent.com/lbrito1/vovozometer/master/report.png)
-
 # Vovozometer
 
 > Vovó de 90 anos humilha dermatologistas com creme anti-rugas e quase é presa em Recife!
 
 Measures clickbait statistics on a given URL.
+
+![Clickbait report chart](https://raw.githubusercontent.com/lbrito1/vovozometer/master/report.png)
 
 ## Usage
 
