@@ -18,8 +18,8 @@ class Reporter
         scr = PageScraper.new(url: url)
         scr.call
 
-        granny_to_regular_ratio = if score_regular > 0
-          score_granny / score_regular.to_f
+        granny_to_regular_ratio = if scr.score_regular > 0
+          scr.score_granny / scr.score_regular.to_f
         else
           0
         end
