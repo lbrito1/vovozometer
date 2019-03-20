@@ -13,11 +13,24 @@ class Reporter
     filepath = "./lib/output/report_#{timestamp}.csv"
 
     CSV.open(filepath, "wb") do |csv|
-      csv << ["short_url", "hits", "score_granny", "score_regular", "ttfg", "full_url"]
+      csv << ["short-url", "hits", "score-granny", "score-regular", "ttfg", "gtr ratio", "full-url"]
       urls.each do |url|
         scr = PageScraper.new(url: url)
         scr.call
-        csv << [scr.short_url, scr.hits, scr.score_granny, scr.score_regular, scr.time_to_first_granny, scr.url]
+
+        granny_to_regular_ratio = if score_regular > 0
+          score_granny / score_regular.to_f
+        else
+          0
+        end
+
+        csv << [scr.short_url,
+          scr.hits,
+          scr.score_granny,
+          scr.score_regular,
+          scr.time_to_first_granny,
+          granny_to_regular_ratio,
+          scr.url]
       end
     end
     $stdout.flush

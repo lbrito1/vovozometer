@@ -57,7 +57,7 @@ class PageScraper
         if text.include?(term)
           occurrences << term
           if group == 'granny'
-            @time_to_first_granny ||= iteration
+            @time_to_first_granny ||= iteration + 1
             @score_granny += 1
           end
           @score_regular += 1 if group == 'regular'
@@ -73,9 +73,9 @@ class PageScraper
 
       driver = Webdriver::UserAgent.driver(browser: :chrome, agent: :iphone, options: options)
 
-      driver.manage.timeouts.implicit_wait = 20
-      driver.manage.timeouts.script_timeout = 20
-      driver.manage.timeouts.page_load = 20
+      driver.manage.timeouts.implicit_wait = 30
+      driver.manage.timeouts.script_timeout = 30
+      driver.manage.timeouts.page_load = 30
 
       driver
     end
