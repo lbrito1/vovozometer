@@ -13,7 +13,7 @@ class Reporter
     filepath = "./lib/output/report_#{timestamp}.csv"
 
     CSV.open(filepath, "wb") do |csv|
-      csv << ["short-url", "hits", "score-granny", "score-regular", "ttfg", "gtr ratio", "full-url"]
+      csv << ["short-url", "hits", "score-granny", "score-regular", "ttfg", "gtr-ratio", "full-url"]
       urls.each do |url|
         scr = PageScraper.new(url: url)
         scr.call
