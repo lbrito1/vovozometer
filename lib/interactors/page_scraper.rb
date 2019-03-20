@@ -20,7 +20,6 @@ class PageScraper
     $stdout.flush
     @results ||= begin
       hits.times do |i|
-
         print "Scraping #{short_url}... #{i + 1} of #{hits} times...\r"
         $stdout.flush
         text = get_page_content
@@ -48,6 +47,9 @@ class PageScraper
     body.attribute("innerHTML").downcase
   rescue Net::ReadTimeout, Selenium::WebDriver::Error::TimeOutError
     puts 'Timed out.'
+    ''
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    puts 'Received an empty page.'
     ''
   end
 
