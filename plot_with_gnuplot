@@ -1,9 +1,23 @@
+# Full report
 set title "Vovozometer - Clickbait Report"
 set datafile separator ","
-set key autotitle columnhead
+set key autotitle columnhead below
 set boxwidth 0.9
 set style data histogram
 set style histogram cluster gap 1
 set style fill solid
 set xtics rotate by 45 right
-plot for [col=3:5] './lib/output/report_2019-03-19-12:16:08.csv' using col:xticlabels(1)
+set tics font "Roboto,10"
+plot for [col=3:5] './lib/output/report_2019-03-20-10:35:28.csv' using col:xticlabels(1)
+
+# gtr-ratio
+set title "Vovozometer - Granny-To-Regular Ratio"
+set datafile separator ","
+set key autotitle columnhead below
+set boxwidth 0.9
+set style data histogram
+set style histogram cluster gap 1
+set style fill solid
+set xtics rotate by 45 right
+set tics font "Roboto,10"
+plot for [col=6:6] './lib/output/report_2019-03-20-10:35:28.csv' using col:xticlabels(1)
